@@ -9,21 +9,33 @@
 /* Begin PBXBuildFile section */
 		7E7385082A779AC50010CA32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7385072A779AC50010CA32 /* AppDelegate.swift */; };
 		7E73850A2A779AC50010CA32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7385092A779AC50010CA32 /* SceneDelegate.swift */; };
-		7E73850C2A779AC50010CA32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E73850B2A779AC50010CA32 /* ViewController.swift */; };
+		7E73850C2A779AC50010CA32 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E73850B2A779AC50010CA32 /* MovieDetailViewController.swift */; };
 		7E73850F2A779AC50010CA32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E73850D2A779AC50010CA32 /* Main.storyboard */; };
 		7E7385112A779AC70010CA32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E7385102A779AC70010CA32 /* Assets.xcassets */; };
 		7E7385142A779AC70010CA32 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E7385122A779AC70010CA32 /* LaunchScreen.storyboard */; };
+		7E7385232A779C440010CA32 /* MovieCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7385222A779C440010CA32 /* MovieCollectionViewController.swift */; };
+		7E7385252A779C670010CA32 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7385242A779C670010CA32 /* SearchViewController.swift */; };
+		7E7385282A779CCA0010CA32 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7385272A779CCA0010CA32 /* Movie.swift */; };
+		7E73852A2A779CD90010CA32 /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7385292A779CD90010CA32 /* MovieData.swift */; };
+		7E73852D2A77A1CD0010CA32 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E73852B2A77A1CD0010CA32 /* MovieCollectionViewCell.swift */; };
+		7E73852E2A77A1CD0010CA32 /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E73852C2A77A1CD0010CA32 /* MovieCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7E7385042A779AC50010CA32 /* BookWorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookWorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E7385072A779AC50010CA32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E7385092A779AC50010CA32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7E73850B2A779AC50010CA32 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7E73850B2A779AC50010CA32 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		7E73850E2A779AC50010CA32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E7385102A779AC70010CA32 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E7385132A779AC70010CA32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E7385152A779AC70010CA32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E7385222A779C440010CA32 /* MovieCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewController.swift; sourceTree = "<group>"; };
+		7E7385242A779C670010CA32 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		7E7385272A779CCA0010CA32 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		7E7385292A779CD90010CA32 /* MovieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
+		7E73852B2A77A1CD0010CA32 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		7E73852C2A77A1CD0010CA32 /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +68,53 @@
 		7E7385062A779AC50010CA32 /* BookWorm */ = {
 			isa = PBXGroup;
 			children = (
+				7E7385262A779CBB0010CA32 /* Model */,
+				7E73851D2A779B420010CA32 /* Main */,
+				7E73851E2A779B810010CA32 /* Detail */,
+				7E73851F2A779BD10010CA32 /* Search */,
 				7E7385072A779AC50010CA32 /* AppDelegate.swift */,
 				7E7385092A779AC50010CA32 /* SceneDelegate.swift */,
-				7E73850B2A779AC50010CA32 /* ViewController.swift */,
 				7E73850D2A779AC50010CA32 /* Main.storyboard */,
 				7E7385102A779AC70010CA32 /* Assets.xcassets */,
 				7E7385122A779AC70010CA32 /* LaunchScreen.storyboard */,
 				7E7385152A779AC70010CA32 /* Info.plist */,
 			);
 			path = BookWorm;
+			sourceTree = "<group>";
+		};
+		7E73851D2A779B420010CA32 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7E7385222A779C440010CA32 /* MovieCollectionViewController.swift */,
+				7E73852B2A77A1CD0010CA32 /* MovieCollectionViewCell.swift */,
+				7E73852C2A77A1CD0010CA32 /* MovieCollectionViewCell.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		7E73851E2A779B810010CA32 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				7E73850B2A779AC50010CA32 /* MovieDetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		7E73851F2A779BD10010CA32 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				7E7385242A779C670010CA32 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		7E7385262A779CBB0010CA32 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7E7385272A779CCA0010CA32 /* Movie.swift */,
+				7E7385292A779CD90010CA32 /* MovieData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +178,7 @@
 				7E7385142A779AC70010CA32 /* LaunchScreen.storyboard in Resources */,
 				7E7385112A779AC70010CA32 /* Assets.xcassets in Resources */,
 				7E73850F2A779AC50010CA32 /* Main.storyboard in Resources */,
+				7E73852E2A77A1CD0010CA32 /* MovieCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,9 +189,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E73850C2A779AC50010CA32 /* ViewController.swift in Sources */,
+				7E73852A2A779CD90010CA32 /* MovieData.swift in Sources */,
+				7E7385252A779C670010CA32 /* SearchViewController.swift in Sources */,
+				7E73850C2A779AC50010CA32 /* MovieDetailViewController.swift in Sources */,
+				7E7385282A779CCA0010CA32 /* Movie.swift in Sources */,
+				7E7385232A779C440010CA32 /* MovieCollectionViewController.swift in Sources */,
 				7E7385082A779AC50010CA32 /* AppDelegate.swift in Sources */,
 				7E73850A2A779AC50010CA32 /* SceneDelegate.swift in Sources */,
+				7E73852D2A77A1CD0010CA32 /* MovieCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,8 +348,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,9 +358,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sesacRain.BookWorm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -319,8 +379,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,9 +389,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sesacRain.BookWorm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
