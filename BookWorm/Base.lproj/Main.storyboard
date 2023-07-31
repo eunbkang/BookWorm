@@ -95,7 +95,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Dxa-ds-r4q"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LPL-mZ-QWu" firstAttribute="centerY" secondItem="Jka-YE-8CB" secondAttribute="centerY" id="Kvu-qv-0CJ"/>
                             <constraint firstItem="LPL-mZ-QWu" firstAttribute="centerX" secondItem="Jka-YE-8CB" secondAttribute="centerX" id="l2I-qA-jRd"/>
@@ -129,9 +129,6 @@
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

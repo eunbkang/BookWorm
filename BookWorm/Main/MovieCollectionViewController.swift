@@ -12,11 +12,7 @@ private let reuseIdentifier = "Cell"
 class MovieCollectionViewController: UICollectionViewController {
 
     var movieList = MovieData().movie
-    var colors: [UIColor] {
-        let colorList: [UIColor] = [.systemRed, .systemOrange, .systemYellow, .systemGreen, .systemBlue, .systemIndigo, .systemPurple, .systemPink, .systemTeal, .systemBrown, .systemGray]
-        let shuffledColors = colorList.shuffled()
-        return shuffledColors
-    }
+    var colors: [UIColor] = [.systemRed, .systemOrange, .systemYellow, .systemGreen, .systemBlue, .systemIndigo, .systemPurple, .systemPink, .systemTeal, .systemBrown, .systemGray]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +41,6 @@ class MovieCollectionViewController: UICollectionViewController {
     }
     
     func configCollectionViewLayout() {
-        // cell estimated size - none으로 인터페이스 빌더(size inspector)에서 설정할 것
         let layout = UICollectionViewFlowLayout()
         
         let inset: CGFloat = 16
@@ -70,7 +65,9 @@ class MovieCollectionViewController: UICollectionViewController {
         }
         let item = movieList[indexPath.item]
         
-        cell.cellBackgroundView.backgroundColor = colors[indexPath.item]
+        let bgColor = colors.shuffled()[0]
+        cell.cellBackgroundView.backgroundColor = bgColor
+        colors.removeAll(where: { $0 == bgColor })
         
         cell.movieTitleLabel.text = item.title
         cell.posterImageView.image = UIImage(named: item.title)
