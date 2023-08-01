@@ -7,12 +7,15 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class MovieCollectionViewController: UICollectionViewController {
 
-    var movieList = MovieData().movie
-    var colors: [UIColor] = [.systemRed, .systemOrange, .systemYellow, .systemGreen, .systemBlue, .systemIndigo, .systemPurple, .systemPink, .systemTeal, .systemBrown, .systemGray]
+    var movieList = MovieData() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
+    var colors: [UIColor] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +24,8 @@ class MovieCollectionViewController: UICollectionViewController {
         collectionView.register(movieCollectionViewCellNib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
         
         configUI()
+        
+        colors = [.systemOrange, .systemYellow, .systemGreen, .systemBlue, .systemIndigo, .systemPurple, .systemTeal, .systemBrown, .systemGray, .systemMint].shuffled()
     }
 
     @IBAction func tappedSearchButton(_ sender: UIBarButtonItem) {
@@ -32,6 +37,10 @@ class MovieCollectionViewController: UICollectionViewController {
         nav.modalPresentationStyle = .fullScreen
         
         present(nav, animated: true)
+    }
+    
+    @objc func tappedLikeButton(_ sender: UIButton) {
+        movieList.movie[sender.tag].isLiked.toggle()
     }
     
     func configUI() {
@@ -56,24 +65,20 @@ class MovieCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movieList.count
+        return movieList.movie.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let item = movieList[indexPath.item]
+        let item = movieList.movie[indexPath.item]
         
-        let bgColor = colors.shuffled()[0]
-        cell.cellBackgroundView.backgroundColor = bgColor
-        colors.removeAll(where: { $0 == bgColor })
+        cell.cellBackgroundView.backgroundColor = colors[indexPath.item]
+        cell.configCell(item: item)
         
-        cell.movieTitleLabel.text = item.title
-        cell.posterImageView.image = UIImage(named: item.title)
-        cell.rateLabel.text = String(item.rate)
-        
-        cell.configCell()
+        cell.likeButton.tag = indexPath.item
+        cell.likeButton.addTarget(self, action: #selector(tappedLikeButton), for: .touchUpInside)
         
         return cell
     }
@@ -82,7 +87,7 @@ class MovieCollectionViewController: UICollectionViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController")
         
-        vc.title = movieList[indexPath.item].title
+        vc.title = movieList.movie[indexPath.item].title
         
         navigationController?.pushViewController(vc, animated: true)
     }

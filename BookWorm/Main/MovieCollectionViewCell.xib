@@ -39,14 +39,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qw1-Cw-vPT">
+                                <rect key="frame" x="117" y="8" width="25" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="9z9-M4-Wyw"/>
+                                    <constraint firstAttribute="width" constant="25" id="oKE-Of-Mi4"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font">
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    </preferredSymbolConfiguration>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Qw1-Cw-vPT" firstAttribute="trailing" secondItem="hwb-E3-Piz" secondAttribute="trailing" id="69e-wX-y15"/>
                             <constraint firstItem="hwb-E3-Piz" firstAttribute="height" secondItem="1Hp-SO-0iO" secondAttribute="height" multiplier="0.75" id="8Pu-qB-azD"/>
                             <constraint firstAttribute="bottom" secondItem="rKG-rj-QdX" secondAttribute="bottom" constant="16" id="ITJ-Fw-HnP"/>
                             <constraint firstAttribute="trailing" secondItem="hwb-E3-Piz" secondAttribute="trailing" constant="8" id="Jfh-1a-tsg"/>
                             <constraint firstItem="8IT-5B-8gI" firstAttribute="leading" secondItem="1Hp-SO-0iO" secondAttribute="leading" constant="8" id="YOh-NC-sHA"/>
                             <constraint firstAttribute="bottom" secondItem="hwb-E3-Piz" secondAttribute="bottom" id="aM6-nA-ufy"/>
+                            <constraint firstItem="Qw1-Cw-vPT" firstAttribute="top" secondItem="8IT-5B-8gI" secondAttribute="top" id="eT9-S7-srd"/>
                             <constraint firstItem="rKG-rj-QdX" firstAttribute="leading" secondItem="1Hp-SO-0iO" secondAttribute="leading" constant="16" id="qdf-mq-uR1"/>
                             <constraint firstItem="8IT-5B-8gI" firstAttribute="top" secondItem="1Hp-SO-0iO" secondAttribute="top" constant="8" id="x4h-oZ-9ot"/>
                         </constraints>
@@ -63,6 +79,7 @@
             <size key="customSize" width="150" height="150"/>
             <connections>
                 <outlet property="cellBackgroundView" destination="1Hp-SO-0iO" id="6Wo-f9-Pza"/>
+                <outlet property="likeButton" destination="Qw1-Cw-vPT" id="8T6-rF-FGU"/>
                 <outlet property="movieTitleLabel" destination="8IT-5B-8gI" id="kSN-gN-JYn"/>
                 <outlet property="posterImageView" destination="hwb-E3-Piz" id="vVT-qC-Eeo"/>
                 <outlet property="rateLabel" destination="rKG-rj-QdX" id="oeb-ES-srx"/>
@@ -71,8 +88,12 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
