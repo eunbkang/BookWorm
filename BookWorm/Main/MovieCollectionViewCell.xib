@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8IT-5B-8gI">
-                                <rect key="frame" x="8" y="8" width="43.333333333333336" height="21"/>
+                                <rect key="frame" x="12.000000000000004" y="12" width="43.333333333333343" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -40,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qw1-Cw-vPT">
-                                <rect key="frame" x="117" y="8" width="25" height="21"/>
+                                <rect key="frame" x="115" y="12" width="25" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="9z9-M4-Wyw"/>
                                     <constraint firstAttribute="width" constant="25" id="oKE-Of-Mi4"/>
@@ -56,15 +56,15 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Qw1-Cw-vPT" firstAttribute="trailing" secondItem="hwb-E3-Piz" secondAttribute="trailing" id="69e-wX-y15"/>
+                            <constraint firstItem="Qw1-Cw-vPT" firstAttribute="trailing" secondItem="hwb-E3-Piz" secondAttribute="trailing" constant="-2" id="69e-wX-y15"/>
                             <constraint firstItem="hwb-E3-Piz" firstAttribute="height" secondItem="1Hp-SO-0iO" secondAttribute="height" multiplier="0.75" id="8Pu-qB-azD"/>
                             <constraint firstAttribute="bottom" secondItem="rKG-rj-QdX" secondAttribute="bottom" constant="16" id="ITJ-Fw-HnP"/>
                             <constraint firstAttribute="trailing" secondItem="hwb-E3-Piz" secondAttribute="trailing" constant="8" id="Jfh-1a-tsg"/>
-                            <constraint firstItem="8IT-5B-8gI" firstAttribute="leading" secondItem="1Hp-SO-0iO" secondAttribute="leading" constant="8" id="YOh-NC-sHA"/>
+                            <constraint firstItem="8IT-5B-8gI" firstAttribute="leading" secondItem="1Hp-SO-0iO" secondAttribute="leading" constant="12" id="YOh-NC-sHA"/>
                             <constraint firstAttribute="bottom" secondItem="hwb-E3-Piz" secondAttribute="bottom" id="aM6-nA-ufy"/>
                             <constraint firstItem="Qw1-Cw-vPT" firstAttribute="top" secondItem="8IT-5B-8gI" secondAttribute="top" id="eT9-S7-srd"/>
                             <constraint firstItem="rKG-rj-QdX" firstAttribute="leading" secondItem="1Hp-SO-0iO" secondAttribute="leading" constant="16" id="qdf-mq-uR1"/>
-                            <constraint firstItem="8IT-5B-8gI" firstAttribute="top" secondItem="1Hp-SO-0iO" secondAttribute="top" constant="8" id="x4h-oZ-9ot"/>
+                            <constraint firstItem="8IT-5B-8gI" firstAttribute="top" secondItem="1Hp-SO-0iO" secondAttribute="top" constant="12" id="x4h-oZ-9ot"/>
                         </constraints>
                     </view>
                 </subviews>

@@ -85,9 +85,9 @@ class MovieCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController")
+        let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
         
-        vc.title = movieList.movie[indexPath.item].title
+        vc.movie = movieList.movie[indexPath.item]
         
         navigationController?.pushViewController(vc, animated: true)
     }

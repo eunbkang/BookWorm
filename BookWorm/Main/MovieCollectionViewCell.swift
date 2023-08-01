@@ -22,11 +22,13 @@ class MovieCollectionViewCell: UICollectionViewCell {
         cellBackgroundView.clipsToBounds = true
         
         movieTitleLabel.textColor = .white
-        rateLabel.textColor = .white
-        
         movieTitleLabel.text = item.title
+        
+        rateLabel.textColor = .white
+        rateLabel.text = "⭐️ \(item.rate)"
+
         posterImageView.image = UIImage(named: item.title)
-        rateLabel.text = String(item.rate)
+        posterImageView.configShadow()
         
         let likeImage = item.isLiked ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
         likeButton.setImage(likeImage, for: .normal)
