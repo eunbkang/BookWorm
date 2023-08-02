@@ -20,11 +20,16 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet var likeButton: UIButton!
     
     var movie: Movie?
+    var isModal: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configUI()
+        
+        if isModal {
+            configXmark()
+        }
     }
 
     func configUI() {
@@ -49,6 +54,16 @@ class MovieDetailViewController: UIViewController {
         if !movie.isLiked {
             likeButton.tintColor = .systemGray
         }
+    }
+    
+    func configXmark() {
+        let xmark = UIImage(systemName: "xmark")
+        let xmarkButton = UIBarButtonItem(image: xmark, style: .plain, target: self, action: #selector(dismissViewController))
+        navigationItem.leftBarButtonItem = xmarkButton
+    }
+    
+    @objc func dismissViewController() {
+        dismiss(animated: true)
     }
 }
 

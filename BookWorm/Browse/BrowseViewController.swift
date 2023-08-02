@@ -29,7 +29,7 @@ class BrowseViewController: UIViewController {
         browseTableView.register(browseTableViewCellNib, forCellReuseIdentifier: BrowseTableViewCell.identifier)
         
         browseTableView.rowHeight = 120
-        
+
         configCollectionViewLayout()
     }
     
@@ -49,6 +49,13 @@ class BrowseViewController: UIViewController {
 
         browseCollectionView.collectionViewLayout = layout
     }
+    
+    @objc func tappedLikeButton(_ sender: UIButton) {
+        movieList[sender.tag].isLiked.toggle()
+        
+        let indexPath: IndexPath = [0, sender.tag]
+        browseTableView.reloadRows(at: [indexPath], with: .automatic)
+    }
 }
 
 // MARK: - UICollectionView Delegate, DataSource
@@ -66,6 +73,20 @@ extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.posterImageView.contentMode = .scaleAspectFill
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
+        vc.movie = movieList[indexPath.item]
+        vc.isModal = true
+        
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        
+        present(nav, animated: true)
+        
+        collectionView.reloadItems(at: [indexPath])
     }
 }
 
@@ -85,6 +106,9 @@ extension BrowseViewController: UITableViewDelegate, UITableViewDataSource {
         let row = movieList[indexPath.row]
         cell.configCellData(row: row)
         
+        cell.likeButton.tag = indexPath.row
+        cell.likeButton.addTarget(self, action: #selector(tappedLikeButton), for: .touchUpInside)
+        
         return cell
     }
 
@@ -92,4 +116,17 @@ extension BrowseViewController: UITableViewDelegate, UITableViewDataSource {
         return "요즘 인기 작품"
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
+        vc.movie = movieList[indexPath.row]
+        vc.isModal = true
+        
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        
+        present(nav, animated: true)
+        
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
 }
