@@ -12,6 +12,7 @@ class BrowseViewController: UIViewController {
     @IBOutlet var browseCollectionView: UICollectionView!
     
     var movieList = MovieData().movie
+    var likedMovieList: [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,8 @@ class BrowseViewController: UIViewController {
         browseTableView.rowHeight = 120
 
         configCollectionViewLayout()
+        
+        likedMovieList = movieList.filter( { $0.isLiked == true } )
     }
     
     func configCollectionViewLayout() {
@@ -52,9 +55,12 @@ class BrowseViewController: UIViewController {
     
     @objc func tappedLikeButton(_ sender: UIButton) {
         movieList[sender.tag].isLiked.toggle()
+        likedMovieList.append(movieList[sender.tag])
         
         let indexPath: IndexPath = [0, sender.tag]
         browseTableView.reloadRows(at: [indexPath], with: .automatic)
+        
+        browseCollectionView.reloadData()
     }
 }
 
@@ -62,14 +68,14 @@ class BrowseViewController: UIViewController {
 
 extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movieList.count
+        return likedMovieList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrowseCollectionViewCell.identifier, for: indexPath) as? BrowseCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.posterImageView.image = UIImage(named: movieList[indexPath.item].title)
+        cell.posterImageView.image = UIImage(named: likedMovieList[indexPath.item].title)
         cell.posterImageView.contentMode = .scaleAspectFill
         
         return cell
