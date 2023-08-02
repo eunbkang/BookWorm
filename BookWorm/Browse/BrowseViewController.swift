@@ -84,7 +84,7 @@ extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
-        vc.movie = movieList[indexPath.item]
+        vc.movie = likedMovieList[indexPath.item]
         vc.isModal = true
         
         let nav = UINavigationController(rootViewController: vc)
