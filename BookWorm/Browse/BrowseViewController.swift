@@ -92,7 +92,7 @@ extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
         vc.movie = likedMovieList[indexPath.item]
-        vc.isModal = true
+        vc.transitionFrom = .browse
         
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
@@ -133,7 +133,7 @@ extension BrowseViewController: UITableViewDelegate, UITableViewDataSource {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
         vc.movie = movieList[indexPath.row]
-        vc.isModal = true
+        vc.transitionFrom = .browse
         
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
