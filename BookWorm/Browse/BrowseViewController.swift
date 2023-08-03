@@ -54,8 +54,15 @@ class BrowseViewController: UIViewController {
     }
     
     @objc func tappedLikeButton(_ sender: UIButton) {
-        movieList[sender.tag].isLiked.toggle()
-        likedMovieList.append(movieList[sender.tag])
+        let index = sender.tag
+        
+        movieList[index].isLiked.toggle()
+        
+        if movieList[index].isLiked {
+            likedMovieList.append(movieList[index])
+        } else {
+            likedMovieList.removeAll(where: { $0.title == movieList[index].title } )
+        }
         
         let indexPath: IndexPath = [0, sender.tag]
         browseTableView.reloadRows(at: [indexPath], with: .automatic)
