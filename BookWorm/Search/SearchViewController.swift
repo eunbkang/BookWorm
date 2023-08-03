@@ -13,7 +13,7 @@ class SearchViewController: UIViewController {
     
     let searchBar = UISearchBar()
     
-    var movieList = MovieData().movie
+    var movieList: [Movie]?
     var resultList: [Movie] = []
     
     var colors: [UIColor]?
@@ -68,6 +68,17 @@ class SearchViewController: UIViewController {
     @objc func dismissSearchViewController() {
         dismiss(animated: true)
     }
+    
+    @objc func tappedLikeButton(_ sender: UIButton) {
+        let index = sender.tag
+        guard let resultIndex = resultList.firstIndex(where: { $0.title == movieList?[index].title }) else { return }
+        
+        print("tapped index: \(index)")
+        movieList?[index].isLiked.toggle()
+        resultList[resultIndex].isLiked.toggle()
+        
+        resultCollectionView.reloadData()
+    }
 }
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -82,8 +93,13 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         cell.configCell(item: resultList[indexPath.item])
         
-        guard let index = movieList.firstIndex(where: { $0.title == resultList[indexPath.item].title }) else { return UICollectionViewCell() }
+        guard let index = movieList?.firstIndex(where: { $0.title == resultList[indexPath.item].title }) else { return UICollectionViewCell() }
+        
         cell.cellBackgroundView.backgroundColor = colors?[index]
+        
+        cell.likeButton.tag = index
+        print("set index to tag \(index)")
+        cell.likeButton.addTarget(self, action: #selector(tappedLikeButton), for: .touchUpInside)
         
         return cell
     }
@@ -91,6 +107,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let movieList = movieList else { return }
         resultList = movieList.filter( { $0.title.contains(searchBar.text!) } )
         resultCollectionView.reloadData()
     }
@@ -102,6 +119,7 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let movieList = movieList else { return }
         resultList = movieList.filter( { $0.title.contains(searchBar.text!) } )
         resultCollectionView.reloadData()
     }
