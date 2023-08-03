@@ -19,6 +19,10 @@ class MovieDetailViewController: UIViewController {
     
     @IBOutlet var likeButton: UIButton!
     
+    @IBOutlet var bottomTextView: UITextView!
+    
+    let placeholderText = "내용을 입력하세요."
+    
     var movie: Movie?
     var isModal: Bool = false
     
@@ -26,6 +30,7 @@ class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
         
         configUI()
+        bottomTextView.delegate = self
         
         if isModal {
             configXmark()
@@ -54,6 +59,9 @@ class MovieDetailViewController: UIViewController {
         if !movie.isLiked {
             likeButton.tintColor = .systemGray
         }
+        
+        bottomTextView.text = placeholderText
+        bottomTextView.textColor = .systemGray
     }
     
     func configXmark() {
@@ -67,3 +75,20 @@ class MovieDetailViewController: UIViewController {
     }
 }
 
+extension MovieDetailViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if bottomTextView.text == placeholderText {
+            bottomTextView.text = nil
+            bottomTextView.textColor = .black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if bottomTextView.text.isEmpty {
+            bottomTextView.text = placeholderText
+            bottomTextView.textColor = .systemGray
+        }
+    }
+    
+    
+}

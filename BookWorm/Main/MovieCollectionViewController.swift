@@ -63,7 +63,9 @@ class MovieCollectionViewController: UICollectionViewController {
         
         collectionView.collectionViewLayout = layout
     }
-    
+}
+
+extension MovieCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movieList.movie.count
     }
@@ -90,5 +92,5 @@ class MovieCollectionViewController: UICollectionViewController {
         vc.movie = movieList.movie[indexPath.item]
         
         navigationController?.pushViewController(vc, animated: true)
-    }
+    }    
 }
