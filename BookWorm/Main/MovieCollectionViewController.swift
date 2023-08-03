@@ -24,8 +24,7 @@ class MovieCollectionViewController: UICollectionViewController {
         collectionView.register(movieCollectionViewCellNib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
         
         configUI()
-        
-        colors = [.systemOrange, .systemYellow, .systemGreen, .systemBlue, .systemIndigo, .systemPurple, .systemTeal, .systemBrown, .systemGray, .systemMint].shuffled()
+        makeRandomCellColors()
     }
 
     @IBAction func tappedSearchButton(_ sender: UIBarButtonItem) {
@@ -33,6 +32,7 @@ class MovieCollectionViewController: UICollectionViewController {
         guard let vc = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController else {
             return
         }
+        vc.colors = colors
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         
@@ -41,6 +41,21 @@ class MovieCollectionViewController: UICollectionViewController {
     
     @objc func tappedLikeButton(_ sender: UIButton) {
         movieList.movie[sender.tag].isLiked.toggle()
+    }
+    
+    func makeRandomCellColors() {
+        let number = movieList.movie.count
+        var randomColors: [UIColor] = []
+        
+        for _ in 0...number {
+            let red = CGFloat.random(in: 0...1)
+            let green = CGFloat.random(in: 0...1)
+            let blue = CGFloat.random(in: 0...1)
+            let color = UIColor(red: red, green: green, blue: blue, alpha: 1)
+            randomColors.append(color)
+        }
+        
+        colors = randomColors
     }
     
     func configUI() {
@@ -92,5 +107,5 @@ extension MovieCollectionViewController {
         vc.movie = movieList.movie[indexPath.item]
         
         navigationController?.pushViewController(vc, animated: true)
-    }    
+    }
 }
