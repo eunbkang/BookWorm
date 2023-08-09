@@ -17,12 +17,15 @@ class SearchViewController: UIViewController {
     
     var bookList: [Book] = []
     var colors: [UIColor] = []
+    var page = 1
+    var isEnd = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         resultCollectionView.delegate = self
         resultCollectionView.dataSource = self
+        resultCollectionView.prefetchDataSource = self
         
         searchBar.delegate = self
         
@@ -36,9 +39,9 @@ class SearchViewController: UIViewController {
     
     // MARK: - Helper
     
-    func callRequest(query: String) {
+    func callRequest(query: String, page: Int) {
         guard let searchText = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
-        let url = "https://dapi.kakao.com/v3/search/book?query=\(searchText)"
+        let url = "https://dapi.kakao.com/v3/search/book?query=\(searchText)&size=14&page=\(page)"
         let header: HTTPHeaders = ["Authorization": "KakaoAK \(APIKey.kakao)"]
         
         AF.request(url, method: .get, headers: header).validate(statusCode: 200...500).responseJSON { response in
@@ -50,8 +53,10 @@ class SearchViewController: UIViewController {
                 let statusCode = response.response?.statusCode ?? 500
                 
                 if statusCode == 200 {
+                    self.isEnd = json["meta"]["is_end"].boolValue
+                    
                     self.makeJsonToBookList(json: json)
-                    self.makeRandomCellColors()
+//                    self.makeRandomCellColors()
                     self.resultCollectionView.reloadData()
                     
                 } else {
@@ -69,19 +74,27 @@ class SearchViewController: UIViewController {
         
         for item in documents {
             let title = item["title"].stringValue
-            var author = item["authors"].arrayValue[0].stringValue
+            let authors = item["authors"].arrayValue
             let thumbnail = item["thumbnail"].stringValue
             let date = item["datetime"].stringValue
             let contents = item["contents"].stringValue
             let price = item["price"].intValue
 
-            if author.count < 1 {
-                author = ""
+            var author = ""
+            if authors.count > 0 {
+                author = authors[0].stringValue
             }
             
             let book = Book(title: title, author: author, thumbnail: thumbnail, date: date, contents: contents, price: price)
             
             bookList.append(book)
+            
+            let red = CGFloat.random(in: 0...1)
+            let green = CGFloat.random(in: 0...1)
+            let blue = CGFloat.random(in: 0...1)
+            let color = UIColor(red: red, green: green, blue: blue, alpha: 1)
+            colors.append(color)
+            
         }
     }
     
@@ -126,14 +139,30 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
+// MARK: - UICollectionViewDataSourcePrefetching
+
+extension SearchViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        guard let query = searchBar.text else { return }
+        
+        for indexPath in indexPaths {
+            if bookList.count - 1 == indexPath.item && page < 50 && !isEnd {
+                page += 1
+                callRequest(query: query, page: page)
+            }
+        }
+    }
+}
+
 // MARK: - UISearchBarDelegate
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         bookList.removeAll()
+        colors.removeAll()
         
         guard let query = searchBar.text else { return }
-        callRequest(query: query)
+        callRequest(query: query, page: page)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -142,6 +171,8 @@ extension SearchViewController: UISearchBarDelegate {
         resultCollectionView.reloadData()
     }
 }
+
+// MARK: - UI & layout
 
 extension SearchViewController {
     func configCollectionViewLayout() {
