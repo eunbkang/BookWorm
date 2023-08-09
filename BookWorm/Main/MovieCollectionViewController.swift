@@ -32,8 +32,8 @@ class MovieCollectionViewController: UICollectionViewController {
         guard let vc = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController else {
             return
         }
-        vc.movieList = movieList.movie
-        vc.colors = colors
+//        vc.movieList = movieList.movie
+//        vc.colors = colors
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         
