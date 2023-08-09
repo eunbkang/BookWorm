@@ -28,6 +28,7 @@
 		7EA0A87A2A83787800CD10ED /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7EA0A8792A83787800CD10ED /* Alamofire */; };
 		7EA0A87D2A83788300CD10ED /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 7EA0A87C2A83788300CD10ED /* SwiftyJSON */; };
 		7EA0A8802A83788F00CD10ED /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7EA0A87F2A83788F00CD10ED /* Kingfisher */; };
+		7EA0A8822A837CB800CD10ED /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7EA0A8812A837CB800CD10ED /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		7E7385462A7A31D30010CA32 /* BrowseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseTableViewCell.xib; sourceTree = "<group>"; };
 		7E73854B2A7A3D530010CA32 /* BrowseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseCollectionViewCell.swift; sourceTree = "<group>"; };
 		7E73854C2A7A3D530010CA32 /* BrowseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowseCollectionViewCell.xib; sourceTree = "<group>"; };
+		7EA0A8812A837CB800CD10ED /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				7E7385102A779AC70010CA32 /* Assets.xcassets */,
 				7E7385122A779AC70010CA32 /* LaunchScreen.storyboard */,
 				7E7385152A779AC70010CA32 /* Info.plist */,
+				7EA0A8812A837CB800CD10ED /* .gitignore */,
 			);
 			path = BookWorm;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E7385482A7A31D30010CA32 /* BrowseTableViewCell.xib in Resources */,
+				7EA0A8822A837CB800CD10ED /* .gitignore in Resources */,
 				7E7385142A779AC70010CA32 /* LaunchScreen.storyboard in Resources */,
 				7E73854E2A7A3D530010CA32 /* BrowseCollectionViewCell.xib in Resources */,
 				7E7385112A779AC70010CA32 /* Assets.xcassets in Resources */,
