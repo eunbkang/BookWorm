@@ -25,6 +25,9 @@
 		7E7385482A7A31D30010CA32 /* BrowseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E7385462A7A31D30010CA32 /* BrowseTableViewCell.xib */; };
 		7E73854D2A7A3D530010CA32 /* BrowseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E73854B2A7A3D530010CA32 /* BrowseCollectionViewCell.swift */; };
 		7E73854E2A7A3D530010CA32 /* BrowseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E73854C2A7A3D530010CA32 /* BrowseCollectionViewCell.xib */; };
+		7EA0A87A2A83787800CD10ED /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7EA0A8792A83787800CD10ED /* Alamofire */; };
+		7EA0A87D2A83788300CD10ED /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 7EA0A87C2A83788300CD10ED /* SwiftyJSON */; };
+		7EA0A8802A83788F00CD10ED /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7EA0A87F2A83788F00CD10ED /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EA0A8802A83788F00CD10ED /* Kingfisher in Frameworks */,
+				7EA0A87D2A83788300CD10ED /* SwiftyJSON in Frameworks */,
+				7EA0A87A2A83787800CD10ED /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +173,11 @@
 			dependencies = (
 			);
 			name = BookWorm;
+			packageProductDependencies = (
+				7EA0A8792A83787800CD10ED /* Alamofire */,
+				7EA0A87C2A83788300CD10ED /* SwiftyJSON */,
+				7EA0A87F2A83788F00CD10ED /* Kingfisher */,
+			);
 			productName = BookWorm;
 			productReference = 7E7385042A779AC50010CA32 /* BookWorm.app */;
 			productType = "com.apple.product-type.application";
@@ -195,6 +206,11 @@
 				Base,
 			);
 			mainGroup = 7E7384FB2A779AC50010CA32;
+			packageReferences = (
+				7EA0A8782A83787800CD10ED /* XCRemoteSwiftPackageReference "Alamofire" */,
+				7EA0A87B2A83788300CD10ED /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				7EA0A87E2A83788F00CD10ED /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 7E7385052A779AC50010CA32 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -460,6 +476,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7EA0A8782A83787800CD10ED /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		7EA0A87B2A83788300CD10ED /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		7EA0A87E2A83788F00CD10ED /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7EA0A8792A83787800CD10ED /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7EA0A8782A83787800CD10ED /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		7EA0A87C2A83788300CD10ED /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7EA0A87B2A83788300CD10ED /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		7EA0A87F2A83788F00CD10ED /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7EA0A87E2A83788F00CD10ED /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7E7384FC2A779AC50010CA32 /* Project object */;
 }
