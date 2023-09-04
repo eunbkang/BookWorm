@@ -304,7 +304,7 @@
         <scene sceneID="zdJ-0n-BIl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L3j-cY-yj3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="메인" image="theatermasks.fill" catalog="system" id="cTE-aO-R66"/>
+                    <tabBarItem key="tabBarItem" title="메인" image="books.vertical.fill" catalog="system" id="cTE-aO-R66"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z37-g9-c95">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -359,10 +359,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="books.vertical.fill" catalog="system" width="128" height="110"/>
         <image name="eyeglasses" catalog="system" width="128" height="55"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
-        <image name="theatermasks.fill" catalog="system" width="128" height="86"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

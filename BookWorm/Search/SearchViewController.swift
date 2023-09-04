@@ -137,6 +137,14 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedBook = bookList[indexPath.row]
+        let bookRecord = BookTable(title: selectedBook.title, author: selectedBook.author, price: selectedBook.price, thumbnail: selectedBook.thumbnail)
+        
+        RealmManager.shared.setNewBook(book: bookRecord)
+    }
 }
 
 // MARK: - UICollectionViewDataSourcePrefetching

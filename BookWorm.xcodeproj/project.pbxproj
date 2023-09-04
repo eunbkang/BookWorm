@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E2E84DB2AA5F3640056D007 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7E2E84DA2AA5F3640056D007 /* Realm */; };
+		7E2E84DD2AA5F3640056D007 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7E2E84DC2AA5F3640056D007 /* RealmSwift */; };
+		7E2E84DF2AA5F43C0056D007 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2E84DE2AA5F43C0056D007 /* RealmModel.swift */; };
+		7E2E84E12AA5F9690056D007 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2E84E02AA5F9680056D007 /* RealmManager.swift */; };
 		7E7385082A779AC50010CA32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7385072A779AC50010CA32 /* AppDelegate.swift */; };
 		7E73850A2A779AC50010CA32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7385092A779AC50010CA32 /* SceneDelegate.swift */; };
 		7E73850C2A779AC50010CA32 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E73850B2A779AC50010CA32 /* MovieDetailViewController.swift */; };
@@ -35,6 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E2E84DE2AA5F43C0056D007 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		7E2E84E02AA5F9680056D007 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		7E7385042A779AC50010CA32 /* BookWorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookWorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E7385072A779AC50010CA32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E7385092A779AC50010CA32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +74,8 @@
 			files = (
 				7EA0A8802A83788F00CD10ED /* Kingfisher in Frameworks */,
 				7EA0A87D2A83788300CD10ED /* SwiftyJSON in Frameworks */,
+				7E2E84DB2AA5F3640056D007 /* Realm in Frameworks */,
+				7E2E84DD2AA5F3640056D007 /* RealmSwift in Frameworks */,
 				7EA0A87A2A83787800CD10ED /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,6 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E2E84E22AA5F96F0056D007 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				7E2E84DE2AA5F43C0056D007 /* RealmModel.swift */,
+				7E2E84E02AA5F9680056D007 /* RealmManager.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		7E7384FB2A779AC50010CA32 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +111,7 @@
 		7E7385062A779AC50010CA32 /* BookWorm */ = {
 			isa = PBXGroup;
 			children = (
+				7E2E84E22AA5F96F0056D007 /* Realm */,
 				7E7385362A7920A10010CA32 /* Utility */,
 				7E7385262A779CBB0010CA32 /* Model */,
 				7EA0A8852A8383D000CD10ED /* Book */,
@@ -197,6 +215,8 @@
 				7EA0A8792A83787800CD10ED /* Alamofire */,
 				7EA0A87C2A83788300CD10ED /* SwiftyJSON */,
 				7EA0A87F2A83788F00CD10ED /* Kingfisher */,
+				7E2E84DA2AA5F3640056D007 /* Realm */,
+				7E2E84DC2AA5F3640056D007 /* RealmSwift */,
 			);
 			productName = BookWorm;
 			productReference = 7E7385042A779AC50010CA32 /* BookWorm.app */;
@@ -230,6 +250,7 @@
 				7EA0A8782A83787800CD10ED /* XCRemoteSwiftPackageReference "Alamofire" */,
 				7EA0A87B2A83788300CD10ED /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				7EA0A87E2A83788F00CD10ED /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				7E2E84D92AA5F3640056D007 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 7E7385052A779AC50010CA32 /* Products */;
 			projectDirPath = "";
@@ -272,9 +293,11 @@
 				7E73854D2A7A3D530010CA32 /* BrowseCollectionViewCell.swift in Sources */,
 				7E7385232A779C440010CA32 /* MovieCollectionViewController.swift in Sources */,
 				7E7385082A779AC50010CA32 /* AppDelegate.swift in Sources */,
+				7E2E84E12AA5F9690056D007 /* RealmManager.swift in Sources */,
 				7E73850A2A779AC50010CA32 /* SceneDelegate.swift in Sources */,
 				7E73852D2A77A1CD0010CA32 /* MovieCollectionViewCell.swift in Sources */,
 				7EA0A88E2A83842100CD10ED /* BookCollectionViewCell.swift in Sources */,
+				7E2E84DF2AA5F43C0056D007 /* RealmModel.swift in Sources */,
 				7EA0A8842A837D2200CD10ED /* APIKey.swift in Sources */,
 				7E7385382A7920AD0010CA32 /* Extension+UIView.swift in Sources */,
 			);
@@ -502,6 +525,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7E2E84D92AA5F3640056D007 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.42.0;
+			};
+		};
 		7EA0A8782A83787800CD10ED /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -529,6 +560,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7E2E84DA2AA5F3640056D007 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7E2E84D92AA5F3640056D007 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		7E2E84DC2AA5F3640056D007 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7E2E84D92AA5F3640056D007 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		7EA0A8792A83787800CD10ED /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7EA0A8782A83787800CD10ED /* XCRemoteSwiftPackageReference "Alamofire" */;

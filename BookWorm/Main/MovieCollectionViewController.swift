@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MovieCollectionViewController: UICollectionViewController {
 
+    var bookList: Results<BookTable>?
+    
     var movieList = MovieData() {
         didSet {
             collectionView.reloadData()
@@ -23,8 +26,20 @@ class MovieCollectionViewController: UICollectionViewController {
         let movieCollectionViewCellNib = UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil)
         collectionView.register(movieCollectionViewCellNib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
         
+        let bookCollectionViewCellNib = UINib(nibName: BookCollectionViewCell.identifier, bundle: nil)
+        collectionView.register(bookCollectionViewCellNib, forCellWithReuseIdentifier: BookCollectionViewCell.identifier)
+        
         configUI()
         makeRandomCellColors()
+        
+        bookList = RealmManager.shared.fetchBooks()
+        RealmManager.shared.getFileUrl()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView.reloadData()
     }
 
     @IBAction func tappedSearchButton(_ sender: UIBarButtonItem) {
@@ -83,30 +98,32 @@ class MovieCollectionViewController: UICollectionViewController {
 
 extension MovieCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movieList.movie.count
+        return bookList?.count ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.identifier, for: indexPath) as? BookCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let item = movieList.movie[indexPath.item]
+        
+        guard let bookList else { return UICollectionViewCell() }
+        let item = bookList[indexPath.item]
         
         cell.cellBackgroundView.backgroundColor = colors[indexPath.item]
-        cell.configCell(item: item)
+        cell.configCellFromTable(item: item)
         
-        cell.likeButton.tag = indexPath.item
-        cell.likeButton.addTarget(self, action: #selector(tappedLikeButton), for: .touchUpInside)
+//        cell.likeButton.tag = indexPath.item
+//        cell.likeButton.addTarget(self, action: #selector(tappedLikeButton), for: .touchUpInside)
         
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
-        
-        vc.movie = movieList.movie[indexPath.item]
-        
-        navigationController?.pushViewController(vc, animated: true)
-    }
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
+//
+//        vc.movie = movieList.movie[indexPath.item]
+//
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
 }
