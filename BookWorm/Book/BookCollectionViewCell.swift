@@ -37,10 +37,6 @@ class BookCollectionViewCell: UICollectionViewCell {
         titleLabel.text = item.title
         authorLabel.text = item.author
         priceLabel.text = "₩\(makeIntToWonString(int: item.price))"
-
-        if let url = URL(string: item.thumbnail) {
-            thumbnailImageView.kf.setImage(with: url)
-        }
     }
     
     func configUI() {

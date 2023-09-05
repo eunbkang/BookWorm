@@ -141,9 +141,10 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let selectedBook = bookList[indexPath.row]
-        let bookRecord = BookTable(title: selectedBook.title, author: selectedBook.author, price: selectedBook.price, thumbnail: selectedBook.thumbnail)
+        let bookRecord = BookTable(title: selectedBook.title, author: selectedBook.author, price: selectedBook.price, thumbnail: selectedBook.thumbnail, review: nil)
         
         RealmManager.shared.setNewBook(book: bookRecord)
+        saveImageToDocument(fileName: "book_\(bookRecord._id).jpg", imageUrl: bookRecord.thumbnail)
     }
 }
 

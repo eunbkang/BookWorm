@@ -111,6 +111,7 @@ extension MovieCollectionViewController {
         
         cell.cellBackgroundView.backgroundColor = colors[indexPath.item]
         cell.configCellFromTable(item: item)
+        cell.thumbnailImageView.image = loadImageToDocument(fileName: "book_\(item._id).jpg")
         
 //        cell.likeButton.tag = indexPath.item
 //        cell.likeButton.addTarget(self, action: #selector(tappedLikeButton), for: .touchUpInside)
@@ -118,12 +119,17 @@ extension MovieCollectionViewController {
         return cell
     }
     
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
-//
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
+
+        guard let bookList else { return }
+        let item = bookList[indexPath.item]
+        
+        vc.book = item
+        
 //        vc.movie = movieList.movie[indexPath.item]
-//
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
+
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

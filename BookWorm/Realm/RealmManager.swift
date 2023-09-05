@@ -24,6 +24,17 @@ class RealmManager {
         }
     }
     
+    func updateBook(book: BookTable?) {
+        // 에러
+        // Attempting to modify object outside of a write transaction - call beginWriteTransaction on an RLMRealm instance first.
+    }
+    
+    func deleteBook(book: BookTable) {
+        try! realm.write {
+            realm.delete(book)
+        }
+    }
+    
     func fetchBooks() -> Results<BookTable> {
         return realm.objects(BookTable.self)
     }

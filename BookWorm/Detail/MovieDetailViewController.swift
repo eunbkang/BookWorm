@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 enum TransitionFrom {
     case main
@@ -33,27 +34,75 @@ class MovieDetailViewController: UIViewController {
     var movie: Movie?
     var transitionFrom: TransitionFrom = .main
     
+    var book: BookTable?
+    
+    let realm = try! Realm()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configUI()
         bottomTextView.delegate = self
         
         if transitionFrom == .browse {
             configXmark()
         }
+        
+        posterImageView.configShadow()
+        
+        setBookToView()
+        configNavigationBarItem()
+    }
+    
+    @objc func tappedEditButton() {
+        do {
+            try realm.write {
+                book?.review = bottomTextView.text
+
+                realm.create(BookTable.self, value: ["_id": book?._id, "review": book?.review], update: .modified)
+            }
+        } catch {
+            print("update erorr")
+        }
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func tappedDeleteButton() {
+        guard let book = book else { return }
+
+        removeImageFromDocument(fileName: "book_\(book._id).jpg")
+        
+        RealmManager.shared.deleteBook(book: book)
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func configNavigationBarItem() {
+        let editButton = UIBarButtonItem(title: "수정", style: .plain, target: self, action: #selector(tappedEditButton))
+        let deleteButton = UIBarButtonItem(title: "삭제", style: .plain, target: self, action: #selector(tappedDeleteButton))
+        
+        navigationItem.rightBarButtonItems = [editButton, deleteButton]
+    }
+    
+    func setBookToView() {
+        guard let book = book else { return }
+        
+        movieTitleLabel.text = book.title
+        infoLabel.text = book.author
+        rateLabel.text = "₩\(makeIntToWonString(int: book.price))"
+        
+        bottomTextView.text = book.review
+        
+        let image = loadImageToDocument(fileName: "book_\(book._id).jpg")
+        posterImageView.image = image
+        posterBackgroundImageView.image = image
     }
 
-    func configUI() {
-        guard let movie = movie else {
-            return
-        }
+    func setMovieToView(movie: Movie) {
         
         let poster = UIImage(named: movie.title)
         posterBackgroundImageView.image = poster
         posterImageView.image = poster
-        
-        posterImageView.configShadow()
         
         movieTitleLabel.text = movie.title
         descriptionLabel.text = movie.overview
@@ -69,6 +118,13 @@ class MovieDetailViewController: UIViewController {
         
         bottomTextView.text = placeholderText
         bottomTextView.textColor = textPlaceholderColor
+    }
+    
+    func makeIntToWonString(int: Int) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        
+        return numberFormatter.string(for: int)!
     }
     
     func configXmark() {
