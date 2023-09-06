@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class BookCollectionViewCell: UICollectionViewCell {
+final class BookCollectionViewCell: UICollectionViewCell {
     static let identifier = "BookCollectionViewCell"
     
     @IBOutlet var cellBackgroundView: UIView!

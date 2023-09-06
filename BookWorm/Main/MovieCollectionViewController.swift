@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class MovieCollectionViewController: UICollectionViewController {
+final class MovieCollectionViewController: UICollectionViewController {
 
     var bookList: Results<BookTable>?
     
@@ -19,6 +19,8 @@ class MovieCollectionViewController: UICollectionViewController {
     }
     
     var colors: [UIColor] = []
+    
+    let repository = BookTableRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +34,11 @@ class MovieCollectionViewController: UICollectionViewController {
         configUI()
         makeRandomCellColors()
         
-        bookList = RealmManager.shared.fetchBooks()
-        RealmManager.shared.getFileUrl()
+        bookList = repository.fetch()
+        repository.getFileUrl()
+        repository.checkSchemaVersion()
+        
+        print(bookList)
     }
     
     override func viewWillAppear(_ animated: Bool) {

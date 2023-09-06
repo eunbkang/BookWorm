@@ -13,8 +13,10 @@ class BookTable: Object {
     @Persisted var title: String
     @Persisted var author: String
     @Persisted var price: Int
-    @Persisted var thumbnail: String
+    @Persisted var thumbnailUrl: String
     @Persisted var review: String?
+//    @Persisted var isLiked: Bool
+    @Persisted var titleAndAuthor: String
     
     convenience init(title: String, author: String, price: Int, thumbnail: String, review: String?) {
         self.init()
@@ -22,7 +24,9 @@ class BookTable: Object {
         self.title = title
         self.author = author
         self.price = price
-        self.thumbnail = thumbnail
+        self.thumbnailUrl = thumbnail
         self.review = review
+//        self.isLiked = false
+        self.titleAndAuthor = "\(title) written by \(author)"
     }
 }

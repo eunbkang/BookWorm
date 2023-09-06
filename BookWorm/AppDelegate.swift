@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,10 +14,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
         UINavigationBar.appearance().tintColor = .systemPink
         UITabBar.appearance().tintColor = .systemPink
+        
+        let config = Realm.Configuration(schemaVersion: 4) { migration, oldSchemaVersion in
+            if oldSchemaVersion < 1 { } // isLiked 컬럼 추가
+            
+            if oldSchemaVersion < 2 { // thumbnail -> thumbnailUrl 컬럼명 변경
+                migration.renameProperty(onType: BookTable.className(), from: "thumbnail", to: "thumbnailUrl")
+            }
+            
+            if oldSchemaVersion < 3 { } // isLiked 컬럼 삭제
+            
+            if oldSchemaVersion < 4 { // titleAndAuhor 컬럼 추가, title/author 포함
+                migration.enumerateObjects(ofType: BookTable.className()) { oldObject, newObject in
+                    guard let new = newObject else { return }
+                    guard let old = oldObject else { return }
+                    
+                    new["titleAndAuthor"] = "\(old["title"]) written by \(new["author"])"
+                }
+            }
+        }
+        
+        Realm.Configuration.defaultConfiguration = config
         
         return true
     }

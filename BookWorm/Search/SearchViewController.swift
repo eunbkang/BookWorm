@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController {
     
     @IBOutlet var resultCollectionView: UICollectionView!
     
@@ -19,6 +19,8 @@ class SearchViewController: UIViewController {
     var colors: [UIColor] = []
     var page = 1
     var isEnd = false
+    
+    let repository = BookTableRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,8 +145,8 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let selectedBook = bookList[indexPath.row]
         let bookRecord = BookTable(title: selectedBook.title, author: selectedBook.author, price: selectedBook.price, thumbnail: selectedBook.thumbnail, review: nil)
         
-        RealmManager.shared.setNewBook(book: bookRecord)
-        saveImageToDocument(fileName: "book_\(bookRecord._id).jpg", imageUrl: bookRecord.thumbnail)
+        repository.createItem(bookRecord)
+        saveImageToDocument(fileName: "book_\(bookRecord._id).jpg", imageUrl: bookRecord.thumbnailUrl)
     }
 }
 

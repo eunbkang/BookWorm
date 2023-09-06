@@ -6,14 +6,14 @@
 //
 
 import UIKit
-import RealmSwift
+//import RealmSwift
 
 enum TransitionFrom {
     case main
     case browse
 }
 
-class MovieDetailViewController: UIViewController {
+final class MovieDetailViewController: UIViewController {
     
     @IBOutlet var posterBackgroundImageView: UIImageView!
     @IBOutlet var posterImageView: UIImageView!
@@ -36,7 +36,8 @@ class MovieDetailViewController: UIViewController {
     
     var book: BookTable?
     
-    let realm = try! Realm()
+//    let realm = try! Realm()
+    let repository = BookTableRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,15 +55,19 @@ class MovieDetailViewController: UIViewController {
     }
     
     @objc func tappedEditButton() {
-        do {
-            try realm.write {
-                book?.review = bottomTextView.text
-
-                realm.create(BookTable.self, value: ["_id": book?._id, "review": book?.review], update: .modified)
-            }
-        } catch {
-            print("update erorr")
-        }
+//        do {
+//            try realm.write {
+//                book?.review = bottomTextView.text
+//
+//                realm.create(BookTable.self, value: ["_id": book?._id, "review": book?.review], update: .modified)
+//            }
+//        } catch {
+//            print("update erorr")
+//        }
+        
+        guard let book = book else { return }
+        
+        repository.updateBook(id: book._id, review: bottomTextView.text)
         
         navigationController?.popViewController(animated: true)
     }
@@ -72,7 +77,7 @@ class MovieDetailViewController: UIViewController {
 
         removeImageFromDocument(fileName: "book_\(book._id).jpg")
         
-        RealmManager.shared.deleteBook(book: book)
+        repository.delete(book)
         
         navigationController?.popViewController(animated: true)
     }
